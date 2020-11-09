@@ -1,0 +1,14 @@
+<div class="container">
+    <h1 class="no-margin ml-sm">{{appTitle}}</h1>
+    <div class="d-grid section-wrapper">
+      <app-spacex-filter
+        [launchedYear]="launchedYear"
+        [isLaunched]="isLaunched"
+        [isLanded]="isLanded"
+        (applySpaceFilters)="applySpaceFilters($event)"
+      ></app-spacex-filter>
+      <app-spacex-launch [launchList]="launchList"></app-spacex-launch>
+    </div>
+    <app-spacex-footer></app-spacex-footer>
+  </div>
+  
