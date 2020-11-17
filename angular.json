@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "sapient-task"
+    }
+  },
+  "defaultProject": "sapient-task",
+  "cli": {
+    "analytics": false
+  }
 }
