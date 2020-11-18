@@ -63,7 +63,7 @@ export class SpacexHomeComponent implements OnInit {
 
   missionList() {
     this.spaceService.getMissionDetails(this.launchedYear,this.isLaunched,this.isLanded,this.recordLimit)
-    .subscribe((data: MissionDetails[]) => (this.launchList = data));
+    .subscribe((data: MissionDetails[]) => (this.launchList = data || []));
   }
 
 

@@ -2,7 +2,7 @@
     background: #fff;
   
     span {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   
     .sub-header {
@@ -32,5 +32,11 @@
 
   .filter-margin {
       margin-left: 22px;
+  }
+
+  @media screen and (min-width: 1540px) {
+    .container span {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
   }
   

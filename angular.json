@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sapient-task": {
+    "spacez-task": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sapient-task",
+            "outputPath": "dist/spacez-task",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sapient-task:build"
+            "browserTarget": "spacez-task:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sapient-task:build:production"
+              "browserTarget": "spacez-task:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sapient-task:build"
+            "browserTarget": "spacez-task:build"
           }
         },
         "test": {
@@ -110,22 +110,66 @@
             ]
           }
         },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sapient-task:serve"
+            "devServerTarget": "spacez:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sapient-task:serve:production"
+              "devServerTarget": "spacez-task:serve:production"
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "spacez-task:build",
+            "serverTarget": "spacez-task:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "spacez-task:build:production",
+              "serverTarget": "spacez-task:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "spacez-task:build:production",
+            "serverTarget": "spacez-task:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
     }
   },
-  "defaultProject": "sapient-task",
+  "defaultProject": "spacez-task",
   "cli": {
     "analytics": false
   }
